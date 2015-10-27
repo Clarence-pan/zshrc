@@ -1,0 +1,49 @@
+#!/usr/bin/env python
+import re
+import sys
+import subprocess
+import argparse
+
+def echo(s):
+    print s
+
+def die(msg=None, ret=0):
+    echo(msg)
+    sys.exit(ret)
+
+def get_size_of(result):
+    ''' @return size, unit '''
+    if not result.strip():
+        return (0, 'B')
+    m = re.match(r'\s*(\d+\.?\d*)(\w+)', result)
+    if not m:
+        raise StandardError("Error: The form is invalid: %s" % result)
+    return (float(m.group(1)), m.group(2))
+
+def cmp_unit(x, y):
+    ''' compare unit of P/T/G/M/K/B'''
+    UNITS = ' BKMGTP'
+    return UNITS.find(x) - UNITS.find(y)
+
+def cmp_du_result_line(x, y):
+    nx, ux = get_size_of(x)
+    ny, uy = get_size_of(y)
+    ucmp = cmp_unit(ux, uy)
+    if ucmp == 0:
+        return int((nx - ny) * 1000)
+    else:
+        return ucmp
+
+if __name__ == '__main__':
+    if len(sys.argv) == 2 and sys.argv[1] in ['-h', '--help', '-?']:
+        die('''
+        This is similar to `du -hd1`, but will output as sorted.
+        About `du`:
+            counting disk usage, `-h` will make output size human readable, `-d1` will onle output depth 1.
+        ''')
+
+    resultText = subprocess.check_output(['du', '-hd1'] + sys.argv[1:])
+    result = [ line for line in resultText.split("\n") if line.strip()]
+    result.sort(cmp_du_result_line)
+    for x in result:
+        echo(x)
