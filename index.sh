@@ -14,3 +14,5 @@ else
     export EDITOR='emacsclient --alternate-editor=vim'
 fi
 
+source ~/.zshrc.d/bashrc_docker
+
