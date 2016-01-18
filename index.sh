@@ -1,6 +1,8 @@
 export PATH=$PATH:~/bin
 export prompt="%n@%m$prompt"
 
+ZSHRCD=~/.zshrc.d
+
 alias help='tldr'
 alias use-socks-proxy='source ~/bin/use-socks-proxy'
 alias use-http-proxy='source ~/bin/use-http-proxy'
@@ -14,5 +16,4 @@ else
     export EDITOR='emacsclient --alternate-editor=vim'
 fi
 
-source ~/.zshrc.d/bashrc_docker
-
+source $ZSHRCD/docker.inc.sh
