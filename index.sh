@@ -7,7 +7,9 @@ alias help='tldr'
 alias use-socks-proxy='source ~/bin/use-socks-proxy'
 alias use-http-proxy='source ~/bin/use-http-proxy'
 alias composer='composer.phar'
-alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs-x86_64-10_9'
+
+alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+#alias emacs='/usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.15/Emacs.app/Contents/MacOS/Emacs'
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
