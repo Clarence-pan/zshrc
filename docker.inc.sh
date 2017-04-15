@@ -1,7 +1,7 @@
-export DOCKER_HOST_IP=192.168.99.100
-export DOCKER_HOST=tcp://$DOCKER_HOST_IP:2376
-export DOCKER_CERT_PATH=~/.docker/machine/machines/default
-export DOCKER_TLS_VERIFY=1
+#export DOCKER_HOST_IP=192.168.99.100
+#export DOCKER_HOST=tcp://$DOCKER_HOST_IP:2376
+#export DOCKER_CERT_PATH=~/.docker/machine/machines/default
+#export DOCKER_TLS_VERIFY=1
 
 function docker-enter() {
     if [ -z "$1" ]; then

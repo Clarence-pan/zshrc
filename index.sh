@@ -18,4 +18,3 @@ else
     export EDITOR='emacsclient --alternate-editor=vim'
 fi
 
-source $ZSHRCD/docker.inc.sh
